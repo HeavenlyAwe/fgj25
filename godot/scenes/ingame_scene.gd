@@ -3,6 +3,8 @@ extends Node2D
 @onready var fade_overlay = %FadeOverlay
 @onready var pause_overlay = %PauseOverlay
 
+@onready var placeholder = $ClickableItem
+
 func _ready() -> void:
 	fade_overlay.visible = true
 	

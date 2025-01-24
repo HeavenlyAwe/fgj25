@@ -13,6 +13,9 @@ func save_data() -> Dictionary:
 	}
 	
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/test.dialogue"), "start")
+	
 	if Input.is_action_pressed("ui_right"):
 		position.x += 100 * delta
 	if Input.is_action_pressed("ui_left"):

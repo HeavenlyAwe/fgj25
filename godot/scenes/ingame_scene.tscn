@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=11 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_h1yxu"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
+[ext_resource type="Texture2D" uid="uid://l8ecnq8sr76p" path="res://assets/ThoughtBubbleTea_GumballMachine_WIP.png" id="6_r1wou"]
+[ext_resource type="Script" path="res://scenes/placeholder.gd" id="7_ajux1"]
+[ext_resource type="PackedScene" uid="uid://dhtm33takyxi0" path="res://scenes/content/dialogue_container.tscn" id="7_lurgl"]
+[ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lp0a6"]
+radius = 22.2036
 
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
+position = Vector2(160, 353)
 texture = ExtResource("2_h1yxu")
 script = ExtResource("3_a5686")
 
@@ -23,3 +31,17 @@ visible = false
 unique_name_in_owner = true
 process_mode = 2
 visible = false
+
+[node name="ClickableItem" type="Sprite2D" parent="."]
+position = Vector2(510, 337)
+texture = ExtResource("6_r1wou")
+script = ExtResource("7_ajux1")
+
+[node name="DialogueContainer" parent="ClickableItem" instance=ExtResource("7_lurgl")]
+dialogue_resource = ExtResource("8_6wyi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItem/DialogueContainer"]
+position = Vector2(1, -8)
+shape = SubResource("CircleShape2D_lp0a6")
+
+[connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
