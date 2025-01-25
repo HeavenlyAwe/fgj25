@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=16 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -10,10 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dhtm33takyxi0" path="res://scenes/content/dialogue_container.tscn" id="7_lurgl"]
 [ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
 [ext_resource type="Texture2D" uid="uid://dv1fyb0h36fdb" path="res://assets/ThoughtBubbleTea_PlaceholderPlayer_WIP.png" id="10_0infa"]
-[ext_resource type="Script" path="res://scenes/animations/intro_animator.gd" id="11_0dfu1"]
-[ext_resource type="Script" path="res://scenes/actors/manager/manager.gd" id="11_1l8l2"]
-[ext_resource type="Script" path="res://scenes/actors/employee/worker.gd" id="11_h5ypl"]
-[ext_resource type="Script" path="res://scenes/move_to_target.gd" id="11_qurd8"]
+[ext_resource type="Script" path="res://scenes/intro_animator.gd" id="11_0dfu1"]
+[ext_resource type="Script" path="res://scenes/manager/manager.gd" id="11_1l8l2"]
+[ext_resource type="Script" path="res://scenes/employee/worker.gd" id="11_h5ypl"]
 [ext_resource type="PackedScene" uid="uid://phqlgly032vg" path="res://scenes/interactables/ingredient.tscn" id="14_cvqvq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lp0a6"]
@@ -39,12 +38,11 @@ process_mode = 2
 visible = false
 
 [node name="ClickableItem" type="Sprite2D" parent="."]
-position = Vector2(927, 115)
+position = Vector2(510, 337)
 texture = ExtResource("6_r1wou")
 script = ExtResource("7_ajux1")
 
 [node name="DialogueContainer" parent="ClickableItem" instance=ExtResource("7_lurgl")]
-dialogue_resource = ExtResource("8_6wyi8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItem/DialogueContainer"]
 position = Vector2(1, -8)
@@ -65,9 +63,6 @@ offset_bottom = 141.0
 text = "Worker
 "
 
-[node name="Node2D2" type="Node2D" parent="Worker"]
-script = ExtResource("11_qurd8")
-
 [node name="Manager" type="Sprite2D" parent="."]
 position = Vector2(-69, 339)
 scale = Vector2(-1, 1)
@@ -84,47 +79,12 @@ offset_right = 44.0
 offset_bottom = 138.0
 text = "Manager"
 
-[node name="Node2D2" type="Node2D" parent="Manager"]
-script = ExtResource("11_qurd8")
-
 [node name="IntroAnimator" type="Node2D" parent="."]
 script = ExtResource("11_0dfu1")
 dialogue_resource = ExtResource("8_6wyi8")
 dialgoue_start = "intro"
 
-[node name="Ingredients" type="Node2D" parent="."]
+[node name="Ingredient" parent="." instance=ExtResource("14_cvqvq")]
+dialogue_start = "start"
 
-[node name="Ingredient" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(663, 505)
-
-[node name="Ingredient2" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(750, 499)
-
-[node name="Ingredient3" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(317, 238)
-
-[node name="Ingredient4" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(441, 235)
-
-[node name="Ingredient5" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(566, 243)
-
-[node name="Ingredient6" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(821, 500)
-
-[node name="MoveAnchors" type="Node2D" parent="."]
-
-[node name="ManagerDiscussionPoint" type="Node2D" parent="MoveAnchors"]
-position = Vector2(620, 390)
-
-[node name="EmployeeDiscussionPoint" type="Node2D" parent="MoveAnchors"]
-position = Vector2(458, 394)
-
-[connection signal="_on_changed_target" from="ClickableItem" to="Worker/Node2D2" method="move_to_position"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient" to="Worker/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient2" to="Worker/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient3" to="Worker/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient4" to="Worker/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient5" to="Worker/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient6" to="Worker/Node2D2" method="move_to_position"]

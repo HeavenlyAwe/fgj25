@@ -9,12 +9,8 @@ do placeholder.done()
 
 
 ~ intro
-do manager.enter()
-do wait(2)
-do worker.enter()
-do wait(3)
 Manager: Bubble bubble, bubble bubble bubble...
 Manager: Bubble bubble, bubble...
 Manager: Bubble bubble bubble, bubble...
-do manager.exit()
+do manager.manager_exit()
 => END

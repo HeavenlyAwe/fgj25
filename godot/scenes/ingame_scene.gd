@@ -22,6 +22,12 @@ func _input(event) -> void:
 		get_tree().paused = true
 		pause_overlay.grab_button_focus()
 		pause_overlay.visible = true
+	
+	#
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#var callback = func():
+			#print("I have arrived!")
+		#$Worker/Node2D2.move_to_position(get_global_mouse_position(), callback)
 		
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
