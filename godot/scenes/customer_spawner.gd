@@ -4,6 +4,8 @@ class_name CustomerSpawner extends Node2D
 @onready var checkoutPoint = $"../FixedAnchors/CustomerCheckoutPoint"
 @onready var despawnPoint = $"../FixedAnchors/CustomerDespawnPoint"
 
+@onready var cashRegister = $"../CashRegister"
+
 var customerScene = preload("res://scenes/actors/customer/customer.tscn")
 
 func spawn_new_customer() -> void:
@@ -14,6 +16,7 @@ func spawn_new_customer() -> void:
 	customer.position = spawnPoint.position
 	customer.target = despawnPoint.position
 	customer._on_despawn.connect(spawn_new_customer)
+	cashRegister._on_accept_payment.connect(customer.leave_shop)
 	#customer.position = spawnPoint
 	#print(spawnPoint)
 	#print(checkoutPoint)
