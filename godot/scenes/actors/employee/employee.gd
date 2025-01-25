@@ -15,5 +15,5 @@ func _init() -> void:
 func _process(delta: float) -> void:
 	if mouse_control:
 		var mouse_pos = get_global_mouse_position()
-		self.flip_h = (mouse_pos.x - position.x < 0)
+		self.flip_h = (mouse_pos.x - position.x > 0)
 	

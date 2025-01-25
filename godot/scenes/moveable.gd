@@ -16,7 +16,10 @@ func move_to_position(target: Vector2, callback: Callable):
 	var duration = position.distance_to(target) / SPEED
 	var tween = create_tween()
 	
-	self.flip_h = (target.x - position.x < 0)
+	if target.x - position.x < 0:
+		self.scale.x = -0.5
+	else:
+		self.scale.x = +0.5
 	
 	tween.tween_property(self, "position", target, duration)
 	tween.tween_callback(callback)
