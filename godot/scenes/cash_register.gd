@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Interactable
 
 signal _on_accept_payment()
 

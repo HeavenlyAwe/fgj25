@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2plt7bbw25l4"]
 
-[ext_resource type="Texture2D" uid="uid://di81cmy2a2l3m" path="res://assets/Employee.png" id="1_yg0q7"]
+[ext_resource type="Texture2D" uid="uid://b115lhfkl3vr7" path="res://assets/Customer1.png" id="1_j7l3q"]
 [ext_resource type="Script" path="res://scenes/actors/customer/customer.gd" id="2_bnhg0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx83c"]
@@ -9,7 +9,8 @@ height = 500.0
 
 [node name="Customer" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_yg0q7")
+texture = ExtResource("1_j7l3q")
+flip_h = true
 script = ExtResource("2_bnhg0")
 
 [node name="Area2D" type="Area2D" parent="."]

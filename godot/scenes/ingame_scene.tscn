@@ -173,7 +173,7 @@ position = Vector2(221, 376)
 position = Vector2(465, 478)
 
 [node name="CustomerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1150, 455)
+position = Vector2(1149, 420)
 
 [node name="CustomerDespawnPoint" type="Node2D" parent="FixedAnchors"]
 position = Vector2(-150, 455)
