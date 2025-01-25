@@ -46,6 +46,29 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_adj3b")
 centered = false
 
+[node name="Ingredients_Background" type="Node2D" parent="."]
+
+[node name="Ingredient" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(432, 278)
+
+[node name="Ingredient2" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(517, 277)
+
+[node name="Ingredient3" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(196, 273)
+
+[node name="Ingredient4" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(315, 280)
+
+[node name="Ingredient5" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(374, 280)
+
+[node name="Ingredient6" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(569, 276)
+
+[node name="Ingredient7" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(627, 277)
+
 [node name="Employee" type="Sprite2D" parent="."]
 position = Vector2(-127, 341)
 texture = ExtResource("10_0infa")
@@ -83,8 +106,19 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_210cq")
 centered = false
 
+[node name="Ingredients_Foreground" type="Node2D" parent="."]
+
+[node name="Ingredient2" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(757, 408)
+
+[node name="Ingredient5" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(662, 409)
+
+[node name="Ingredient6" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(858, 410)
+
 [node name="ClickableItem" type="Sprite2D" parent="."]
-position = Vector2(927, 115)
+position = Vector2(792, 134)
 texture = ExtResource("6_r1wou")
 script = ExtResource("7_ajux1")
 
@@ -102,33 +136,13 @@ script = ExtResource("11_0dfu1")
 dialogue_resource = ExtResource("8_6wyi8")
 dialgoue_start = "intro"
 
-[node name="Ingredients" type="Node2D" parent="."]
-
-[node name="Ingredient" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(663, 505)
-
-[node name="Ingredient2" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(750, 499)
-
-[node name="Ingredient3" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(317, 238)
-
-[node name="Ingredient4" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(441, 235)
-
-[node name="Ingredient5" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(566, 243)
-
-[node name="Ingredient6" parent="Ingredients" instance=ExtResource("14_cvqvq")]
-position = Vector2(821, 500)
-
 [node name="FixedAnchors" type="Node2D" parent="."]
 
 [node name="ManagerDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(620, 390)
+position = Vector2(347, 391)
 
 [node name="EmployeeDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(458, 394)
+position = Vector2(530, 394)
 
 [node name="CustomerCheckoutPoint" type="Node2D" parent="FixedAnchors"]
 position = Vector2(236, 595)
@@ -145,10 +159,14 @@ position = Vector2(-140, 455)
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("16_8xw7x")
 
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient2" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient3" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient4" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient5" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient6" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient7" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient2" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient5" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient6" to="Employee" method="move_to_position"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient2" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient3" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient4" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient5" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient6" to="Employee" method="move_to_position"]
