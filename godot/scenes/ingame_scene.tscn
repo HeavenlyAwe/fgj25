@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=18 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -13,8 +13,9 @@
 [ext_resource type="Script" path="res://scenes/animations/animation_intro_scene.gd" id="11_0dfu1"]
 [ext_resource type="Script" path="res://scenes/actors/manager/manager.gd" id="11_1l8l2"]
 [ext_resource type="Script" path="res://scenes/actors/employee/employee.gd" id="11_h5ypl"]
-[ext_resource type="Script" path="res://scenes/move_to_target.gd" id="11_qurd8"]
 [ext_resource type="PackedScene" uid="uid://phqlgly032vg" path="res://scenes/interactables/ingredient.tscn" id="14_cvqvq"]
+[ext_resource type="PackedScene" uid="uid://d2plt7bbw25l4" path="res://scenes/actors/customer/customer.tscn" id="14_jwryg"]
+[ext_resource type="Script" path="res://scenes/customer_spawner.gd" id="16_8xw7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lp0a6"]
 radius = 22.2036
@@ -65,9 +66,6 @@ offset_bottom = 141.0
 text = "Worker
 "
 
-[node name="Node2D2" type="Node2D" parent="Employee"]
-script = ExtResource("11_qurd8")
-
 [node name="Manager" type="Sprite2D" parent="."]
 position = Vector2(-111, 307)
 scale = Vector2(-1, 1)
@@ -84,8 +82,7 @@ offset_right = 44.0
 offset_bottom = 138.0
 text = "Manager"
 
-[node name="Node2D2" type="Node2D" parent="Manager"]
-script = ExtResource("11_qurd8")
+[node name="Customer" parent="." instance=ExtResource("14_jwryg")]
 
 [node name="IntroAnimator" type="Node2D" parent="."]
 script = ExtResource("11_0dfu1")
@@ -121,10 +118,10 @@ position = Vector2(620, 390)
 position = Vector2(458, 394)
 
 [node name="CustomerCheckoutPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(393, 634)
+position = Vector2(236, 595)
 
 [node name="CustomerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1176, 684)
+position = Vector2(1248, 590)
 
 [node name="ManagerSpawnPoint" type="Node2D" parent="FixedAnchors"]
 position = Vector2(-100, 415)
@@ -132,11 +129,13 @@ position = Vector2(-100, 415)
 [node name="EmployeeSpawnPoint" type="Node2D" parent="FixedAnchors"]
 position = Vector2(-140, 455)
 
-[connection signal="_on_changed_target" from="ClickableItem" to="Employee/Node2D2" method="move_to_position"]
+[node name="CustomerSpawner" type="Node2D" parent="."]
+script = ExtResource("16_8xw7x")
+
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient" to="Employee/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient2" to="Employee/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient3" to="Employee/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient4" to="Employee/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient5" to="Employee/Node2D2" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients/Ingredient6" to="Employee/Node2D2" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient2" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient3" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient4" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient5" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="Ingredients/Ingredient6" to="Employee" method="move_to_position"]

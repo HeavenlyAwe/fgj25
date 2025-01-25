@@ -9,11 +9,12 @@ func start() -> void:
 	var cb1 = func():
 		var cb2 = func():
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialgoue_start)
-		$"../Employee/Node2D2".move_to_position($"../FixedAnchors/EmployeeDiscussionPoint".position, cb2)
-	$"../Manager/Node2D2".move_to_position($"../FixedAnchors/ManagerDiscussionPoint".position, cb1)
+		$"../Employee".move_to_position($"../FixedAnchors/EmployeeDiscussionPoint".position, cb2)
+	$"../Manager".move_to_position($"../FixedAnchors/ManagerDiscussionPoint".position, cb1)
 	
-func manager_exit() -> void:
-	var cb1 = func():
-		pass
-	$"../Manager/Node2D2".move_to_position($"../FixedAnchors/ManagerSpawnPoint".position, cb1)
-	
+#func manager_exit() -> void:
+	#var cb1 = func():
+		#print("Manager has exited the building!")
+		#$"../CustomerSpawner".spaw_new_customer()
+	#$"../Manager/Node2D2".move_to_position($"../FixedAnchors/ManagerSpawnPoint".position, cb1)
+	#
