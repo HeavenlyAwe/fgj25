@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/interactables/clickable_item.gd" id="7_ajux1"]
 [ext_resource type="PackedScene" uid="uid://dhtm33takyxi0" path="res://scenes/content/dialogue_container.tscn" id="7_lurgl"]
 [ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
-[ext_resource type="Texture2D" uid="uid://dv1fyb0h36fdb" path="res://assets/ThoughtBubbleTea_PlaceholderPlayer_WIP.png" id="10_0infa"]
+[ext_resource type="Texture2D" uid="uid://di81cmy2a2l3m" path="res://assets/Employee.png" id="8_skgrt"]
 [ext_resource type="Texture2D" uid="uid://epuhrvuvio7d" path="res://assets/BubbleTea_BG_FrontofPlayer.png" id="10_210cq"]
 [ext_resource type="Script" path="res://scenes/animations/animation_intro_scene.gd" id="11_0dfu1"]
 [ext_resource type="Script" path="res://scenes/actors/manager/manager.gd" id="11_1l8l2"]
@@ -69,26 +69,10 @@ position = Vector2(569, 276)
 [node name="Ingredient7" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
 position = Vector2(627, 277)
 
-[node name="Employee" type="Sprite2D" parent="."]
-position = Vector2(-127, 341)
-texture = ExtResource("10_0infa")
-script = ExtResource("11_h5ypl")
-
-[node name="Node2D" type="Node2D" parent="Employee"]
-
-[node name="Label" type="Label" parent="Employee/Node2D"]
-offset_left = -43.0
-offset_top = 117.0
-offset_right = 26.0
-offset_bottom = 141.0
-text = "Worker
-"
-
 [node name="Manager" type="Sprite2D" parent="."]
-position = Vector2(-111, 307)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("10_0infa")
+position = Vector2(1145, 316)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_skgrt")
 script = ExtResource("11_1l8l2")
 
 [node name="Node2D" type="Node2D" parent="Manager"]
@@ -100,6 +84,22 @@ offset_top = 114.0
 offset_right = 44.0
 offset_bottom = 138.0
 text = "Manager"
+
+[node name="Employee" type="Sprite2D" parent="."]
+position = Vector2(1121, 348)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_skgrt")
+script = ExtResource("11_h5ypl")
+
+[node name="Node2D" type="Node2D" parent="Employee"]
+
+[node name="Label" type="Label" parent="Employee/Node2D"]
+offset_left = -43.0
+offset_top = 117.0
+offset_right = 26.0
+offset_bottom = 141.0
+text = "Worker
+"
 
 [node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -130,6 +130,7 @@ position = Vector2(1, -8)
 shape = SubResource("CircleShape2D_lp0a6")
 
 [node name="Customer" parent="." instance=ExtResource("14_jwryg")]
+visible = false
 
 [node name="IntroAnimator" type="Node2D" parent="."]
 script = ExtResource("11_0dfu1")
@@ -139,22 +140,25 @@ dialgoue_start = "intro"
 [node name="FixedAnchors" type="Node2D" parent="."]
 
 [node name="ManagerDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(347, 391)
+position = Vector2(378, 373)
 
 [node name="EmployeeDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(530, 394)
+position = Vector2(221, 376)
 
 [node name="CustomerCheckoutPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(236, 595)
+position = Vector2(465, 478)
 
 [node name="CustomerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1248, 590)
+position = Vector2(1150, 455)
+
+[node name="CustomerDespawnPoint" type="Node2D" parent="FixedAnchors"]
+position = Vector2(-150, 455)
 
 [node name="ManagerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(-100, 415)
+position = Vector2(1161, 445)
 
 [node name="EmployeeSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(-140, 455)
+position = Vector2(1106, 483)
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("16_8xw7x")

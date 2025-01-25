@@ -2,6 +2,7 @@ class_name CustomerSpawner extends Node2D
 
 @onready var spawnPoint = $"../FixedAnchors/CustomerSpawnPoint"
 @onready var checkoutPoint = $"../FixedAnchors/CustomerCheckoutPoint"
+@onready var despawnPoint = $"../FixedAnchors/CustomerDespawnPoint"
 
 var customerScene = preload("res://scenes/actors/customer/customer.tscn")
 
@@ -11,7 +12,7 @@ func spawn_new_customer() -> void:
 	add_child(customer)
 	customer.reparent($"..", false)
 	customer.position = spawnPoint.position
-	customer.target = spawnPoint.position
+	customer.target = despawnPoint.position
 	customer._on_despawn.connect(spawn_new_customer)
 	#customer.position = spawnPoint
 	#print(spawnPoint)
