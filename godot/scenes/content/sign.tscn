@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dudvr2ohf80l1"]
+
+[ext_resource type="Script" path="res://scenes/sign.gd" id="1_aqxi5"]
+
+[node name="Sign" type="Node2D"]
+position = Vector2(370, 192)
+script = ExtResource("1_aqxi5")

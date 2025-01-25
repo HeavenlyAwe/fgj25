@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=40 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -26,12 +26,17 @@
 [ext_resource type="PackedScene" uid="uid://d2plt7bbw25l4" path="res://scenes/actors/customer/customer.tscn" id="14_jwryg"]
 [ext_resource type="Texture2D" uid="uid://bg4qqjpb5rxpf" path="res://assets/items/Toppings_Blender.png" id="14_v64ik"]
 [ext_resource type="Script" path="res://scenes/cash_register.gd" id="15_kq15r"]
+[ext_resource type="Texture2D" uid="uid://lmorugq70mrp" path="res://assets/items/Cups_Sign.png" id="15_ydp00"]
 [ext_resource type="Script" path="res://scenes/customer_spawner.gd" id="16_8xw7x"]
 [ext_resource type="Texture2D" uid="uid://dh6wq725d3o1i" path="res://assets/items/Bobas_Raspberry.png" id="20_31iyl"]
+[ext_resource type="Script" path="res://scenes/sign.gd" id="20_anl41"]
 [ext_resource type="Texture2D" uid="uid://660xqi6i7xy4" path="res://assets/items/Bobas_BrownSugar.png" id="20_xxt3s"]
+[ext_resource type="Texture2D" uid="uid://7ft2relipl15" path="res://assets/items/Teas_Sign.png" id="22_cgfhm"]
 [ext_resource type="Texture2D" uid="uid://be1sysifitjtx" path="res://assets/items/Bobas_Tropical.png" id="22_n33di"]
 [ext_resource type="Texture2D" uid="uid://b115lhfkl3vr7" path="res://assets/Customer1.png" id="22_r0cdi"]
 [ext_resource type="Texture2D" uid="uid://ndty435bia0f" path="res://assets/Customer2.png" id="23_eq06k"]
+[ext_resource type="Texture2D" uid="uid://cd3w3nbgk6pr" path="res://assets/items/Toppings_Sign.png" id="23_pfld8"]
+[ext_resource type="Texture2D" uid="uid://bkprmpjafdyal" path="res://assets/items/Bobas_Sign.png" id="24_elg6l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -49,7 +54,7 @@ visible = false
 script = ExtResource("2_tkhkv")
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
-position = Vector2(160, 353)
+position = Vector2(428, 346)
 texture = ExtResource("2_h1yxu")
 script = ExtResource("3_a5686")
 
@@ -131,6 +136,44 @@ text = "Worker
 [node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
 texture = ExtResource("10_210cq")
 centered = false
+
+[node name="Signs_Foreground" type="Node2D" parent="."]
+
+[node name="Sign_Cups" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(370, 192)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Cups"]
+texture = ExtResource("15_ydp00")
+centered = false
+offset = Vector2(-90, 0)
+
+[node name="Sign_Teas" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(740, 184)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Teas"]
+texture = ExtResource("22_cgfhm")
+centered = false
+offset = Vector2(-132, 0)
+
+[node name="Sign_Toppings" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(1148, 180)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Toppings"]
+texture = ExtResource("23_pfld8")
+centered = false
+offset = Vector2(-144, 0)
+
+[node name="Sign_Bobas" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(1548, 176)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Bobas"]
+texture = ExtResource("24_elg6l")
+centered = false
+offset = Vector2(-116, 0)
 
 [node name="Ingredients_Foreground" type="Node2D" parent="."]
 

@@ -18,7 +18,6 @@ func spawn_new_customer() -> void:
 	customer.position = spawnPoint.position
 	customer.target = despawnPoint.position
 	customer._on_despawn.connect(spawn_new_customer)
-	cashRegister._on_accept_payment.connect(customer.leave_shop)
 	if ! customerTextures.is_empty():
 		customer.texture = customerTextures.pick_random()
 	#customer.position = spawnPoint
@@ -26,6 +25,9 @@ func spawn_new_customer() -> void:
 	#print(checkoutPoint)
 	#add_child(customer)
 	#
+	
+	cashRegister._on_accept_payment.connect(customer.leave_shop)
+	
 	var cb1 = func():
 		print("At checkout!")
 		print(customer.position)
