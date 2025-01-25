@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://phqlgly032vg"]
 
-[ext_resource type="Texture2D" uid="uid://l8ecnq8sr76p" path="res://assets/ThoughtBubbleTea_GumballMachine_WIP.png" id="1_fneo3"]
+[ext_resource type="Texture2D" uid="uid://bbbrddqfpg23w" path="res://assets/items/Teas_Matcha.png" id="1_754qc"]
 [ext_resource type="Script" path="res://scenes/interactables/ingredient.gd" id="2_yppjp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0ia"]
-radius = 22.0
-height = 80.0
+radius = 50.0
+height = 200.0
 
 [node name="IngredientA" type="Sprite2D"]
-texture = ExtResource("1_fneo3")
+texture = ExtResource("1_754qc")
 script = ExtResource("2_yppjp")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_cd0ia")
+one_way_collision = true
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
