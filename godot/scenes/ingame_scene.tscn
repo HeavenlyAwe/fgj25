@@ -27,8 +27,9 @@ radius = 22.2036
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
 
-[node name="DisableDebugVisuals" type="Node2D" parent="."]
+[node name="DisableDebugVisuals" type="Node2D" parent="." node_paths=PackedStringArray("spriteHolders")]
 script = ExtResource("2_tkhkv")
+spriteHolders = [NodePath("../Ingredients_Background"), NodePath("../Ingredients_Foreground")]
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
 position = Vector2(160, 353)
@@ -54,25 +55,25 @@ centered = false
 [node name="Ingredients_Background" type="Node2D" parent="."]
 
 [node name="Ingredient" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(432, 278)
+position = Vector2(433, 269)
 
 [node name="Ingredient2" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(517, 277)
+position = Vector2(520, 270)
 
 [node name="Ingredient3" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(196, 273)
+position = Vector2(192, 268)
 
 [node name="Ingredient4" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(315, 280)
+position = Vector2(308, 270)
 
 [node name="Ingredient5" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(374, 280)
+position = Vector2(371, 269)
 
 [node name="Ingredient6" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(569, 276)
+position = Vector2(572, 266)
 
 [node name="Ingredient7" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(627, 277)
+position = Vector2(626, 264)
 
 [node name="Manager" type="Sprite2D" parent="."]
 position = Vector2(1161, 360)
@@ -115,15 +116,16 @@ centered = false
 [node name="Ingredients_Foreground" type="Node2D" parent="."]
 
 [node name="Ingredient2" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(757, 408)
+position = Vector2(755, 400)
 
 [node name="Ingredient5" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(662, 409)
+position = Vector2(660, 401)
 
 [node name="Ingredient6" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(858, 410)
+position = Vector2(851, 405)
 
 [node name="ClickableItem" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(792, 134)
 texture = ExtResource("6_r1wou")
 script = ExtResource("7_ajux1")
