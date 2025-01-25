@@ -197,5 +197,6 @@ script = ExtResource("16_8xw7x")
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient2" to="Employee" method="move_to_position"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient5" to="Employee" method="move_to_position"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient6" to="Employee" method="move_to_position"]
+[connection signal="_on_target_changed" from="CashRegister" to="Employee" method="move_to_position"]
 [connection signal="input_event" from="CashRegister/Area2D" to="CashRegister" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
