@@ -4,6 +4,8 @@ extends Node2D
 @onready var pause_overlay = %PauseOverlay
 
 @onready var placeholder = $ClickableItem
+@onready var worker = $Worker
+@onready var manager = $Manager
 
 func _ready() -> void:
 	fade_overlay.visible = true
@@ -12,6 +14,7 @@ func _ready() -> void:
 		SaveGame.load_game(get_tree())
 	
 	pause_overlay.game_exited.connect(_save_game)
+	$IntroAnimator.start()
 
 func _input(event) -> void:
 	if event.is_action_pressed("pause") and not pause_overlay.visible:

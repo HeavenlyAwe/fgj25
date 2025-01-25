@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://scenes/placeholder.gd" id="7_ajux1"]
 [ext_resource type="PackedScene" uid="uid://dhtm33takyxi0" path="res://scenes/content/dialogue_container.tscn" id="7_lurgl"]
 [ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
+[ext_resource type="Texture2D" uid="uid://dv1fyb0h36fdb" path="res://assets/ThoughtBubbleTea_PlaceholderPlayer_WIP.png" id="10_0infa"]
+[ext_resource type="Script" path="res://scenes/intro_animator.gd" id="11_0dfu1"]
+[ext_resource type="Script" path="res://scenes/manager.gd" id="11_1l8l2"]
+[ext_resource type="Script" path="res://scenes/worker.gd" id="11_h5ypl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lp0a6"]
 radius = 22.2036
@@ -43,5 +47,41 @@ dialogue_resource = ExtResource("8_6wyi8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItem/DialogueContainer"]
 position = Vector2(1, -8)
 shape = SubResource("CircleShape2D_lp0a6")
+
+[node name="Worker" type="Sprite2D" parent="."]
+position = Vector2(-128, 335)
+texture = ExtResource("10_0infa")
+script = ExtResource("11_h5ypl")
+
+[node name="Node2D" type="Node2D" parent="Worker"]
+
+[node name="Label" type="Label" parent="Worker/Node2D"]
+offset_left = -43.0
+offset_top = 117.0
+offset_right = 26.0
+offset_bottom = 141.0
+text = "Worker
+"
+
+[node name="Manager" type="Sprite2D" parent="."]
+position = Vector2(-69, 339)
+scale = Vector2(-1, 1)
+texture = ExtResource("10_0infa")
+script = ExtResource("11_1l8l2")
+
+[node name="Node2D" type="Node2D" parent="Manager"]
+scale = Vector2(-1, 1)
+
+[node name="Label" type="Label" parent="Manager/Node2D"]
+offset_left = -25.0
+offset_top = 114.0
+offset_right = 44.0
+offset_bottom = 138.0
+text = "Manager"
+
+[node name="IntroAnimator" type="Node2D" parent="."]
+script = ExtResource("11_0dfu1")
+dialogue_resource = ExtResource("8_6wyi8")
+dialgoue_start = "intro"
 
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]

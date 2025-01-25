@@ -6,3 +6,15 @@ Manager: Bubble, bubble, bubble (welcome)!
 	Manager: Bubble bubble?
 do placeholder.done()
 => END
+
+
+~ intro
+do manager.enter()
+do wait(2)
+do worker.enter()
+do wait(3)
+Manager: Bubble bubble, bubble bubble bubble...
+Manager: Bubble bubble, bubble...
+Manager: Bubble bubble bubble, bubble...
+do manager.exit()
+=> END
