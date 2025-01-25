@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bnyesn1845wb3"
+path="res://.godot/imported/bubble-font.png-c39c14f6847e14e16534385bd594ebf4.fontdata"
+
+[deps]
+
+source_file="res://fonts/bubble-font.png"
+dest_files=["res://.godot/imported/bubble-font.png-c39c14f6847e14e16534385bd594ebf4.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'a\'-\'z\'", "\'_\'", "\'ä\'", "\'ö\'", "\' \'", "\' \'", "\' \'", "\'.\'")
+kerning_pairs=PackedStringArray()
+columns=11
+rows=3
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 1, 1)
+ascent=0
+descent=0
+fallbacks=[Resource("res://fonts/bubble-font-copy.png")]
+compress=true
+scaling_mode=2
