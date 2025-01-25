@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=26 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://d2plt7bbw25l4" path="res://scenes/actors/customer/customer.tscn" id="14_jwryg"]
 [ext_resource type="Script" path="res://scenes/cash_register.gd" id="15_kq15r"]
 [ext_resource type="Script" path="res://scenes/customer_spawner.gd" id="16_8xw7x"]
+[ext_resource type="Texture2D" uid="uid://b115lhfkl3vr7" path="res://assets/Customer1.png" id="22_r0cdi"]
+[ext_resource type="Texture2D" uid="uid://ndty435bia0f" path="res://assets/Customer2.png" id="23_eq06k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -186,6 +188,7 @@ position = Vector2(1106, 483)
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("16_8xw7x")
+customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k")])
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient" to="Employee" method="move_to_position"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient2" to="Employee" method="move_to_position"]

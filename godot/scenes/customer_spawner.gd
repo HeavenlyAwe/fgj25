@@ -1,5 +1,7 @@
 class_name CustomerSpawner extends Node2D
 
+@export var customerTextures: Array[Texture]
+
 @onready var spawnPoint = $"../FixedAnchors/CustomerSpawnPoint"
 @onready var checkoutPoint = $"../FixedAnchors/CustomerCheckoutPoint"
 @onready var despawnPoint = $"../FixedAnchors/CustomerDespawnPoint"
@@ -17,6 +19,8 @@ func spawn_new_customer() -> void:
 	customer.target = despawnPoint.position
 	customer._on_despawn.connect(spawn_new_customer)
 	cashRegister._on_accept_payment.connect(customer.leave_shop)
+	if ! customerTextures.is_empty():
+		customer.texture = customerTextures.pick_random()
 	#customer.position = spawnPoint
 	#print(spawnPoint)
 	#print(checkoutPoint)
