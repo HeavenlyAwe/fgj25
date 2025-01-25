@@ -1,15 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=20 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_h1yxu"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
 [ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
+[ext_resource type="Texture2D" uid="uid://cfwulcadk3o6n" path="res://assets/BubbleTea_BG_BehindPlayer.png" id="6_adj3b"]
 [ext_resource type="Texture2D" uid="uid://l8ecnq8sr76p" path="res://assets/ThoughtBubbleTea_GumballMachine_WIP.png" id="6_r1wou"]
 [ext_resource type="Script" path="res://scenes/interactables/clickable_item.gd" id="7_ajux1"]
 [ext_resource type="PackedScene" uid="uid://dhtm33takyxi0" path="res://scenes/content/dialogue_container.tscn" id="7_lurgl"]
 [ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
 [ext_resource type="Texture2D" uid="uid://dv1fyb0h36fdb" path="res://assets/ThoughtBubbleTea_PlaceholderPlayer_WIP.png" id="10_0infa"]
+[ext_resource type="Texture2D" uid="uid://epuhrvuvio7d" path="res://assets/BubbleTea_BG_FrontofPlayer.png" id="10_210cq"]
 [ext_resource type="Script" path="res://scenes/animations/animation_intro_scene.gd" id="11_0dfu1"]
 [ext_resource type="Script" path="res://scenes/actors/manager/manager.gd" id="11_1l8l2"]
 [ext_resource type="Script" path="res://scenes/actors/employee/employee.gd" id="11_h5ypl"]
@@ -39,17 +41,10 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[node name="ClickableItem" type="Sprite2D" parent="."]
-position = Vector2(927, 115)
-texture = ExtResource("6_r1wou")
-script = ExtResource("7_ajux1")
-
-[node name="DialogueContainer" parent="ClickableItem" instance=ExtResource("7_lurgl")]
-dialogue_resource = ExtResource("8_6wyi8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItem/DialogueContainer"]
-position = Vector2(1, -8)
-shape = SubResource("CircleShape2D_lp0a6")
+[node name="Background_BehindPlayer" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_adj3b")
+centered = false
 
 [node name="Employee" type="Sprite2D" parent="."]
 position = Vector2(-127, 341)
@@ -68,7 +63,8 @@ text = "Worker
 
 [node name="Manager" type="Sprite2D" parent="."]
 position = Vector2(-111, 307)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 texture = ExtResource("10_0infa")
 script = ExtResource("11_1l8l2")
 
@@ -81,6 +77,23 @@ offset_top = 114.0
 offset_right = 44.0
 offset_bottom = 138.0
 text = "Manager"
+
+[node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_210cq")
+centered = false
+
+[node name="ClickableItem" type="Sprite2D" parent="."]
+position = Vector2(927, 115)
+texture = ExtResource("6_r1wou")
+script = ExtResource("7_ajux1")
+
+[node name="DialogueContainer" parent="ClickableItem" instance=ExtResource("7_lurgl")]
+dialogue_resource = ExtResource("8_6wyi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableItem/DialogueContainer"]
+position = Vector2(1, -8)
+shape = SubResource("CircleShape2D_lp0a6")
 
 [node name="Customer" parent="." instance=ExtResource("14_jwryg")]
 
