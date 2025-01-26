@@ -31,15 +31,22 @@ var current_thought2: Texture
 var current_thought3: Texture
 
 var current_order: Array[Texture]
+var current_order_score = 0
 
 func score_thought(tex1: Texture) -> void:
 	if tex1 in current_order:
-		$"../Score".add_score(1)
+		#$"../Score".add_score(1)
 		current_order.erase(tex1)
+		current_order_score += 1
 	else:
-		$"../Score".add_score(-1)
+		#$"../Score".add_score(-1)
+		current_order_score -= 1
 	print("Score: ", $"../Score".current_score)
 
+func confirm_order() -> void:
+	$"../Score".add_score(current_order_score)
+	current_order_score = 0
+	
 func spawn_new_customer() -> void:
 	print("Spawning customer")
 	var customer = customerScene.instantiate()
@@ -64,6 +71,7 @@ func spawn_new_customer() -> void:
 	current_order = [current_thought1, current_thought2, current_thought3]
 	
 	cashRegister._on_accept_payment.connect(customer.leave_shop)
+	cashRegister._on_accept_payment.connect(confirm_order)
 	
 	var cb1 = func():
 		print("At checkout!")

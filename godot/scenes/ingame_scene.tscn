@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=45 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://dcooqlwaw73is" path="res://assets/Customer4.png" id="39_qq4ax"]
 [ext_resource type="Texture2D" uid="uid://bv7ihsqlr5x7f" path="res://assets/Customer5.png" id="40_n3f84"]
 [ext_resource type="Script" path="res://scenes/score.gd" id="41_h55fi"]
+[ext_resource type="Texture2D" uid="uid://bviafh6vb5e5a" path="res://assets/chart-background.png" id="42_fy58b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -256,7 +257,19 @@ script = ExtResource("16_8xw7x")
 customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k"), ExtResource("38_8dt33"), ExtResource("39_qq4ax"), ExtResource("40_n3f84")])
 
 [node name="Score" type="Node2D" parent="."]
+position = Vector2(600, 600)
 script = ExtResource("41_h55fi")
+window_x = Vector2(10, 230)
+window_y = Vector2(10, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Score"]
+texture = ExtResource("42_fy58b")
+centered = false
+
+[node name="Line2D" type="Line2D" parent="Score"]
+position = Vector2(12, 0)
+points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 40)
+default_color = Color(0, 0, 0, 1)
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
