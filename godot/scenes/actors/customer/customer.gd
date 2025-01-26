@@ -15,7 +15,17 @@ func _ready() -> void:
 func set_thought(tex1: Texture, tex2: Texture, tex3: Texture) -> void:
 	$BrainBubble/ThoughtSlots.set_thought(tex1, tex2, tex3)
 
-func leave_shop() -> void:
+func leave_shop(order_score: int) -> void:
+	print("Got score: ", order_score)
+	if order_score <= 0:
+		set_reaction(Reaction.Angry)
+	elif order_score == 1:
+		set_reaction(Reaction.Sad)
+	elif order_score == 2 || order_score == 3:
+		set_reaction(Reaction.Happy)
+	else:
+		set_reaction(Reaction.SuperHappy)
+		
 	var cb1 = func():
 		print("Bye bye!")
 		self.queue_free()
@@ -38,6 +48,19 @@ func hide_brain() -> void:
 	var cb = func():
 		$BrainBubble.visible = false
 	tween.tween_callback(cb)
+	
+enum Reaction {
+	Angry, Sad, Happy, SuperHappy
+}
+func set_reaction(reaction: Reaction) -> void:
+	if reaction == Reaction.Angry:
+		$Reaction/AngryThoughts.visible = true
+	elif reaction == Reaction.Happy:
+		$Reaction/HappyThoughts.visible = true
+	elif reaction == Reaction.Sad:
+		$Reaction/SadThoughts.visible = true
+	elif reaction == Reaction.SuperHappy:
+		$Reaction/SuperHappyThoughts.visible = true
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

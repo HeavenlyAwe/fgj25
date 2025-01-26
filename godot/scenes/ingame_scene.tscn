@@ -283,7 +283,6 @@ window_x = Vector2(10, 230)
 window_y = Vector2(10, 230)
 
 [node name="DayChart" type="Node2D" parent="ReportSession/Score"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ReportSession/Score/DayChart"]
 texture = ExtResource("42_fy58b")
@@ -295,7 +294,6 @@ points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 
 default_color = Color(0, 0, 0, 1)
 
 [node name="LongTermChart" type="Node2D" parent="ReportSession/Score"]
-visible = false
 position = Vector2(260, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReportSession/Score/LongTermChart"]

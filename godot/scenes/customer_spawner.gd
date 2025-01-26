@@ -80,7 +80,7 @@ func spawn_new_customer() -> void:
 		current_thought3
 	)
 	
-	current_order = [current_thought1, current_thought2, current_thought3]
+	current_order = [$"../Ingredients_Background/Ingredient_Cups".texture, current_thought1, current_thought2, current_thought3]
 	
 	cashRegister._on_accept_payment.connect(customer.leave_shop)
 	cashRegister._on_accept_payment.connect(confirm_order)

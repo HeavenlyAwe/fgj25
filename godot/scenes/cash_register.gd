@@ -8,5 +8,4 @@ signal _on_accept_payment()
 		#_on_accept_payment.emit()
 		
 func _on_move_complete() -> void:
-	_on_accept_payment.emit()
-	pass
+	_on_accept_payment.emit($"../CustomerSpawner".current_order_score)
