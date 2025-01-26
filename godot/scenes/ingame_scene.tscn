@@ -168,7 +168,7 @@ position = Vector2(2320, 720)
 texture = ExtResource("9_thyfw")
 flip_h = true
 script = ExtResource("11_1l8l2")
-audio_player = NodePath("../IntroAnimator/AudioStreamPlayer")
+audio_player = NodePath("../AudioStreamPlayer")
 
 [node name="Node2D" type="Node2D" parent="Manager"]
 scale = Vector2(-1, 1)
@@ -251,9 +251,7 @@ script = ExtResource("11_0dfu1")
 dialogue_resource = ExtResource("8_6wyi8")
 dialgoue_start = "intro"
 sound_effect = ExtResource("40_05y34")
-audio_player = NodePath("AudioStreamPlayer")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="IntroAnimator"]
+audio_player = NodePath("../AudioStreamPlayer")
 
 [node name="FixedAnchors" type="Node2D" parent="."]
 
@@ -282,8 +280,10 @@ position = Vector2(2210, 960)
 script = ExtResource("16_8xw7x")
 customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k"), ExtResource("38_8dt33"), ExtResource("39_qq4ax"), ExtResource("40_n3f84")])
 
-[node name="ReportSession" type="Node2D" parent="."]
+[node name="ReportSession" type="Node2D" parent="." node_paths=PackedStringArray("audio_player")]
 script = ExtResource("41_ou10r")
+sound_effect = ExtResource("40_05y34")
+audio_player = NodePath("../AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="ReportSession"]
 visible = false
@@ -334,6 +334,8 @@ default_color = Color(0, 0.67451, 0, 1)
 stream = ExtResource("50_vr3rb")
 autoplay = true
 bus = &"Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
