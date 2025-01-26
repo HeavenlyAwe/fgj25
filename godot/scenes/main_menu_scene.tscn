@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=16 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/ingame_scene.tscn" id="2_nl5i6"]
 [ext_resource type="PackedScene" uid="uid://g4qhvbvdm62w" path="res://scenes/game_settings_scene.tscn" id="3_dgs4d"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="3_kf1us"]
+[ext_resource type="Texture2D" uid="uid://50uul23dkenr" path="res://assets/MenuScreen_Bubble.png" id="4_2qamj"]
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
 [ext_resource type="Texture2D" uid="uid://d14dlyfi7wc83" path="res://assets/MenuScreen_English.png" id="4_gk7xk"]
 [ext_resource type="FontFile" uid="uid://bnyesn1845wb3" path="res://fonts/bubble-font.png" id="5_458kj"]
@@ -12,6 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://cavrqydo612iq" path="res://assets/symbols/settings.png" id="8_dvoba"]
 [ext_resource type="Texture2D" uid="uid://oxdrbtp3rtu2" path="res://assets/symbols/quit.png" id="9_rdnx8"]
 [ext_resource type="AudioStream" uid="uid://dqqu761iyx3d" path="res://music/apple_cider.ogg" id="11_d5phh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d00m7"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("4_2qamj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gk7xk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -31,10 +46,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuScreenEnglish" type="Sprite2D" parent="UI/CenterContainer"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_gk7xk")
-centered = false
+[node name="MenuAnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterContainer"]
+position = Vector2(511.889, 288.25)
+scale = Vector2(0.499566, 0.499566)
+sprite_frames = SubResource("SpriteFrames_d00m7")
+autoplay = "default"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="UI/CenterContainer"]
 custom_minimum_size = Vector2(700, 0)
