@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=54 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -49,6 +49,7 @@
 [ext_resource type="Script" path="res://scenes/report_session.gd" id="41_ou10r"]
 [ext_resource type="Texture2D" uid="uid://bviafh6vb5e5a" path="res://assets/chart-background.png" id="42_fy58b"]
 [ext_resource type="Texture2D" uid="uid://deyqc0m8u5ne1" path="res://assets/Resultats.png" id="43_glls7"]
+[ext_resource type="AudioStream" uid="uid://dqqu761iyx3d" path="res://music/apple_cider.ogg" id="50_vr3rb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -322,6 +323,11 @@ centered = false
 scale = Vector2(1.5, 1.5)
 points = PackedVector2Array(14, 210, 40, 170, 72, 190, 89.6835, 163.995, 106, 140, 144, 160, 218, 40)
 default_color = Color(0, 0.67451, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("50_vr3rb")
+autoplay = true
+bus = &"Music"
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
