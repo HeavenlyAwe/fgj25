@@ -2,6 +2,9 @@ class_name Ingredient extends Interactable
 
 signal ingredient_interaction(Texture)
 
+@export var sound_effect: AudioStream
+@export var audio_player: AudioStreamPlayer
+
 func _ready() -> void:
 	super()
 	_on_target_changed.connect(_on_interaction)
@@ -15,4 +18,8 @@ func _ready() -> void:
 
 func _on_interaction(position: Vector2, callback: Callable) -> void:
 	print("Interaction registered")
+	if is_instance_valid(audio_player) && is_instance_valid(sound_effect):
+		audio_player.stream = sound_effect
+		audio_player.play()
+		print("play audio")
 	ingredient_interaction.emit(texture)
