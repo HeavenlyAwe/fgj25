@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
 [ext_resource type="FontFile" uid="uid://bnyesn1845wb3" path="res://fonts/bubble-font.png" id="5_458kj"]
 [ext_resource type="Texture2D" uid="uid://di2fs8haovte3" path="res://assets/symbols/play.png" id="6_c2c6x"]
-[ext_resource type="AudioStream" uid="uid://dlchk3c1baiy8" path="res://music/corgie-title.ogg" id="6_drnm6"]
 [ext_resource type="Texture2D" uid="uid://dgf5i8nkuwcq0" path="res://assets/symbols/continue.png" id="6_tfcb4"]
 [ext_resource type="Texture2D" uid="uid://cavrqydo612iq" path="res://assets/symbols/settings.png" id="8_dvoba"]
 [ext_resource type="Texture2D" uid="uid://oxdrbtp3rtu2" path="res://assets/symbols/quit.png" id="9_rdnx8"]
+[ext_resource type="AudioStream" uid="uid://dqqu761iyx3d" path="res://music/apple_cider.ogg" id="11_d5phh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -99,6 +99,6 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_drnm6")
+stream = ExtResource("11_d5phh")
 autoplay = true
 bus = &"Music"
