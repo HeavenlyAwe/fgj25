@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=44 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -13,14 +13,34 @@
 [ext_resource type="Resource" uid="uid://c81n2o58v4dpm" path="res://dialogue/test.dialogue" id="8_6wyi8"]
 [ext_resource type="Texture2D" uid="uid://di81cmy2a2l3m" path="res://assets/Employee.png" id="8_skgrt"]
 [ext_resource type="Texture2D" uid="uid://mgxoca684u4r" path="res://assets/Manager.png" id="9_thyfw"]
+[ext_resource type="Texture2D" uid="uid://bybrd24fvjib2" path="res://assets/items/Toppings_Ice.png" id="10_7rhe3"]
 [ext_resource type="Texture2D" uid="uid://epuhrvuvio7d" path="res://assets/BubbleTea_BG_FrontofPlayer.png" id="10_210cq"]
 [ext_resource type="Script" path="res://scenes/animations/animation_intro_scene.gd" id="11_0dfu1"]
 [ext_resource type="Script" path="res://scenes/actors/manager/manager.gd" id="11_1l8l2"]
+[ext_resource type="Texture2D" uid="uid://cy2y3ks08hrfh" path="res://assets/items/Teas_EarlGrey.png" id="11_fpqg3"]
 [ext_resource type="Script" path="res://scenes/actors/employee/employee.gd" id="11_h5ypl"]
+[ext_resource type="Texture2D" uid="uid://ccfkkirxs255a" path="res://assets/items/Cups.png" id="11_kaa7k"]
+[ext_resource type="Texture2D" uid="uid://caiopsuuqtsnw" path="res://assets/items/Teas_BerryBlast.png" id="12_oh6v2"]
+[ext_resource type="Texture2D" uid="uid://hyth23mbc3v" path="res://assets/items/Toppings_Cream.png" id="13_tn4ye"]
 [ext_resource type="PackedScene" uid="uid://phqlgly032vg" path="res://scenes/interactables/ingredient.tscn" id="14_cvqvq"]
 [ext_resource type="PackedScene" uid="uid://d2plt7bbw25l4" path="res://scenes/actors/customer/customer.tscn" id="14_jwryg"]
+[ext_resource type="Texture2D" uid="uid://bg4qqjpb5rxpf" path="res://assets/items/Toppings_Blender.png" id="14_v64ik"]
 [ext_resource type="Script" path="res://scenes/cash_register.gd" id="15_kq15r"]
+[ext_resource type="Texture2D" uid="uid://lmorugq70mrp" path="res://assets/items/Cups_Sign.png" id="15_ydp00"]
 [ext_resource type="Script" path="res://scenes/customer_spawner.gd" id="16_8xw7x"]
+[ext_resource type="Texture2D" uid="uid://dh6wq725d3o1i" path="res://assets/items/Bobas_Raspberry.png" id="20_31iyl"]
+[ext_resource type="Script" path="res://scenes/sign.gd" id="20_anl41"]
+[ext_resource type="Texture2D" uid="uid://660xqi6i7xy4" path="res://assets/items/Bobas_BrownSugar.png" id="20_xxt3s"]
+[ext_resource type="Texture2D" uid="uid://7ft2relipl15" path="res://assets/items/Teas_Sign.png" id="22_cgfhm"]
+[ext_resource type="Texture2D" uid="uid://be1sysifitjtx" path="res://assets/items/Bobas_Tropical.png" id="22_n33di"]
+[ext_resource type="Texture2D" uid="uid://b115lhfkl3vr7" path="res://assets/Customer1.png" id="22_r0cdi"]
+[ext_resource type="Texture2D" uid="uid://ndty435bia0f" path="res://assets/Customer2.png" id="23_eq06k"]
+[ext_resource type="Texture2D" uid="uid://cd3w3nbgk6pr" path="res://assets/items/Toppings_Sign.png" id="23_pfld8"]
+[ext_resource type="Texture2D" uid="uid://bkprmpjafdyal" path="res://assets/items/Bobas_Sign.png" id="24_elg6l"]
+[ext_resource type="Texture2D" uid="uid://vv8joh10cs3i" path="res://assets/Customer3.png" id="38_8dt33"]
+[ext_resource type="Texture2D" uid="uid://dcooqlwaw73is" path="res://assets/Customer4.png" id="39_qq4ax"]
+[ext_resource type="Texture2D" uid="uid://bv7ihsqlr5x7f" path="res://assets/Customer5.png" id="40_n3f84"]
+[ext_resource type="Script" path="res://scenes/score.gd" id="41_h55fi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -30,14 +50,15 @@ height = 66.0
 radius = 22.2036
 
 [node name="IngameScene" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_objyc")
 
-[node name="DisableDebugVisuals" type="Node2D" parent="." node_paths=PackedStringArray("spriteHolders")]
+[node name="DisableDebugVisuals" type="Node2D" parent="."]
+visible = false
 script = ExtResource("2_tkhkv")
-spriteHolders = [NodePath("../Ingredients_Background"), NodePath("../Ingredients_Foreground")]
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
-position = Vector2(160, 353)
+position = Vector2(428, 346)
 texture = ExtResource("2_h1yxu")
 script = ExtResource("3_a5686")
 
@@ -53,36 +74,40 @@ process_mode = 2
 visible = false
 
 [node name="Background_BehindPlayer" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_adj3b")
 centered = false
 
 [node name="Ingredients_Background" type="Node2D" parent="."]
 
-[node name="Ingredient" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(433, 269)
+[node name="Ingredient_Cups" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(418, 490)
+texture = ExtResource("11_kaa7k")
 
-[node name="Ingredient2" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(520, 270)
+[node name="Ingredient_Teas_BerryBlast" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(616, 536)
+texture = ExtResource("11_fpqg3")
 
-[node name="Ingredient3" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(192, 268)
+[node name="Ingredient_Teas_EarlGrey" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(740, 536)
+texture = ExtResource("12_oh6v2")
 
-[node name="Ingredient4" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(308, 270)
+[node name="Ingredient_Teas_Matcha" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(866, 536)
 
-[node name="Ingredient5" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(371, 269)
+[node name="Ingredient_Toppings_Ice" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(1042, 538)
+texture = ExtResource("10_7rhe3")
 
-[node name="Ingredient6" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(572, 266)
+[node name="Ingredient_Toppings_Cream" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(1144, 534)
+texture = ExtResource("13_tn4ye")
 
-[node name="Ingredient7" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
-position = Vector2(626, 264)
+[node name="Ingredient_Toppings_Blender" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+position = Vector2(1272, 518)
+texture = ExtResource("14_v64ik")
 
 [node name="Manager" type="Sprite2D" parent="."]
-position = Vector2(1161, 360)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2320, 720)
 texture = ExtResource("9_thyfw")
 flip_h = true
 script = ExtResource("11_1l8l2")
@@ -98,8 +123,7 @@ offset_bottom = 138.0
 text = "Manager"
 
 [node name="Employee" type="Sprite2D" parent="."]
-position = Vector2(1121, 348)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2240, 700)
 texture = ExtResource("8_skgrt")
 script = ExtResource("11_h5ypl")
 
@@ -114,25 +138,68 @@ text = "Worker
 "
 
 [node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_210cq")
 centered = false
 
+[node name="Signs_Foreground" type="Node2D" parent="."]
+
+[node name="Sign_Cups" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(370, 192)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Cups"]
+texture = ExtResource("15_ydp00")
+centered = false
+offset = Vector2(-90, 0)
+
+[node name="Sign_Teas" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(740, 184)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Teas"]
+texture = ExtResource("22_cgfhm")
+centered = false
+offset = Vector2(-132, 0)
+
+[node name="Sign_Toppings" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(1148, 180)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Toppings"]
+texture = ExtResource("23_pfld8")
+centered = false
+offset = Vector2(-144, 0)
+
+[node name="Sign_Bobas" type="Node2D" parent="Signs_Foreground"]
+position = Vector2(1548, 176)
+script = ExtResource("20_anl41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Signs_Foreground/Sign_Bobas"]
+texture = ExtResource("24_elg6l")
+centered = false
+offset = Vector2(-116, 0)
+
 [node name="Ingredients_Foreground" type="Node2D" parent="."]
 
-[node name="Ingredient2" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(755, 400)
+[node name="Ingredient_Bobas_Raspberry" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(1320, 810)
+texture = ExtResource("20_31iyl")
 
-[node name="Ingredient5" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(660, 401)
+[node name="Ingredient_Bobas_BrownSugar" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(1512, 810)
+texture = ExtResource("20_xxt3s")
 
-[node name="Ingredient6" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
-position = Vector2(851, 405)
+[node name="Ingredient_Toppings_Tropical" parent="Ingredients_Foreground" instance=ExtResource("14_cvqvq")]
+position = Vector2(1702, 810)
+texture = ExtResource("22_n33di")
 
 [node name="CashRegister" type="Sprite2D" parent="."]
-position = Vector2(166, 373)
+position = Vector2(330, 740)
+scale = Vector2(2, 2)
 texture = ExtResource("6_r1wou")
 script = ExtResource("15_kq15r")
+max_scale = Vector2(2.1, 2.1)
+normal_scale = Vector2(2, 2)
 
 [node name="Area2D" type="Area2D" parent="CashRegister"]
 
@@ -164,39 +231,53 @@ dialgoue_start = "intro"
 [node name="FixedAnchors" type="Node2D" parent="."]
 
 [node name="ManagerDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(378, 373)
+position = Vector2(760, 740)
 
 [node name="EmployeeDiscussionPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(221, 376)
+position = Vector2(440, 750)
 
 [node name="CustomerCheckoutPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(465, 478)
+position = Vector2(930, 960)
 
 [node name="CustomerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1149, 420)
+position = Vector2(2300, 840)
 
 [node name="CustomerDespawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(-150, 455)
+position = Vector2(-300, 910)
 
 [node name="ManagerSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1161, 445)
+position = Vector2(2320, 900)
 
 [node name="EmployeeSpawnPoint" type="Node2D" parent="FixedAnchors"]
-position = Vector2(1106, 483)
+position = Vector2(2210, 960)
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("16_8xw7x")
+customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k"), ExtResource("38_8dt33"), ExtResource("39_qq4ax"), ExtResource("40_n3f84")])
 
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient2" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient3" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient4" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient5" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient6" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient7" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient2" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient5" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient6" to="Employee" method="move_to_position"]
+[node name="Score" type="Node2D" parent="."]
+script = ExtResource("41_h55fi")
+
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_BerryBlast" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_BerryBlast" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_EarlGrey" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_EarlGrey" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_Matcha" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_Matcha" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Ice" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Ice" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Cream" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Cream" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Blender" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Blender" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_BrownSugar" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Bobas_BrownSugar" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Toppings_Tropical" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Toppings_Tropical" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="CashRegister" to="Employee" method="move_to_position"]
 [connection signal="input_event" from="CashRegister/Area2D" to="CashRegister" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]

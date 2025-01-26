@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=13 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/ingame_scene.tscn" id="2_nl5i6"]
 [ext_resource type="PackedScene" uid="uid://g4qhvbvdm62w" path="res://scenes/game_settings_scene.tscn" id="3_dgs4d"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="3_kf1us"]
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
+[ext_resource type="FontFile" uid="uid://bnyesn1845wb3" path="res://fonts/bubble-font.png" id="5_458kj"]
+[ext_resource type="Texture2D" uid="uid://di2fs8haovte3" path="res://assets/symbols/play.png" id="6_c2c6x"]
 [ext_resource type="AudioStream" uid="uid://dlchk3c1baiy8" path="res://music/corgie-title.ogg" id="6_drnm6"]
+[ext_resource type="Texture2D" uid="uid://dgf5i8nkuwcq0" path="res://assets/symbols/continue.png" id="6_tfcb4"]
+[ext_resource type="Texture2D" uid="uid://cavrqydo612iq" path="res://assets/symbols/settings.png" id="8_dvoba"]
+[ext_resource type="Texture2D" uid="uid://oxdrbtp3rtu2" path="res://assets/symbols/quit.png" id="9_rdnx8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -34,28 +39,40 @@ layout_mode = 2
 
 [node name="ContinueButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_458kj")
+theme_override_icons/icon = ExtResource("6_tfcb4")
 text = "continue"
 
 [node name="NewGameButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_458kj")
+theme_override_icons/icon = ExtResource("6_c2c6x")
 text = "new_game"
 
 [node name="SettingsButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_458kj")
+theme_override_icons/icon = ExtResource("8_dvoba")
 text = "settings"
 
 [node name="ExitButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_458kj")
+theme_override_icons/icon = ExtResource("9_rdnx8")
 text = "leave_game"
 
 [node name="Credits" type="MarginContainer" parent="UI/CenterContainer/VBoxContainer"]
