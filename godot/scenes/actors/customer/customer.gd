@@ -3,6 +3,10 @@ extends Movable
 @export var target: Vector2 = Vector2.ZERO
 @export var brain_tween_duration: float = 0.1
 
+@export var group1: Array[Texture] = []
+@export var group2: Array[Texture] = []
+@export var group3: Array[Texture] = []
+
 signal _on_despawn()
 
 func _ready() -> void:
