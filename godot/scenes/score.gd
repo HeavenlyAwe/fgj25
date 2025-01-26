@@ -17,7 +17,7 @@ func restart() -> void:
 	day_scores.append(0)
 
 func add_score(score) -> void:
-	print("Add score")
+	print("Add score ", score)
 	current_score += score
 	scores.append(current_score)
 	compute_chart(scores, $"LongTermChart/Line2D")

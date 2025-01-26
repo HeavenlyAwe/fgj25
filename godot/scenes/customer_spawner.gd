@@ -47,8 +47,9 @@ func score_thought(tex1: Texture) -> void:
 		current_order_score -= 1
 	print("Score: ", $"../ReportSession/Score".current_score)
 
-func confirm_order() -> void:
-	$"../ReportSession/Score".add_score(current_order_score)
+func confirm_order(score: int) -> void:
+	# Minus one, because the mug isn't worth anything without content!
+	$"../ReportSession/Score".add_score(current_order_score - 1)
 	current_order_score = 0
 
 func restart() -> void:
