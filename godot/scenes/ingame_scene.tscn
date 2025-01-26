@@ -273,6 +273,7 @@ centered = false
 [node name="Area2D" type="Area2D" parent="ReportSession/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReportSession/Sprite2D/Area2D"]
+visible = false
 position = Vector2(801, 365)
 shape = SubResource("RectangleShape2D_3af57")
 
@@ -296,16 +297,17 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="LongTermChart" type="Node2D" parent="ReportSession/Score"]
 visible = false
-position = Vector2(260, 0)
+position = Vector2(210, -62)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReportSession/Score/LongTermChart"]
+visible = false
 texture = ExtResource("42_fy58b")
 centered = false
 
 [node name="Line2D" type="Line2D" parent="ReportSession/Score/LongTermChart"]
-position = Vector2(12, 0)
-points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 40)
-default_color = Color(0, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
+points = PackedVector2Array(14, 210, 40, 170, 72, 190, 89.6835, 163.995, 106, 140, 144, 160, 218, 40)
+default_color = Color(0, 0.67451, 0, 1)
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
