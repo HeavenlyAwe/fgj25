@@ -6,18 +6,25 @@ extends Node2D
 var current_score = 0
 
 var scores: Array[float]
-var points: PackedVector2Array
+var day_scores: Array[float]
 
 func _ready() -> void:
 	scores.append(0)
+	day_scores.append(0)
+	
+func restart() -> void:
+	day_scores.clear()
+	day_scores.append(0)
 
 func add_score(score) -> void:
 	print("Add score")
 	current_score += score
 	scores.append(current_score)
-	compute_chart()
+	compute_chart(scores, $"LongTermChart/Line2D")
+	day_scores.append(current_score)
+	compute_chart(day_scores, $"DayChart/Line2D")
 	
-func compute_chart() -> void:
+func compute_chart(scores: Array[float], line: Line2D) -> void:
 	if scores.size() < 2:
 		return
 		
@@ -36,9 +43,10 @@ func compute_chart() -> void:
 		y_step = (window_y.y - window_y.x) / (max_y - min_y)
 	
 	#print(x_step, " : ", y_step)
-	points.clear()
+	
+	var points: PackedVector2Array
 	for i in range(0, scores.size()):
 		points.append(Vector2(i * x_step, window_y.y - (scores[i] - min_y) * y_step))
 		
-	$Line2D.points = points
+	line.points = points
 	queue_redraw()

@@ -1,6 +1,7 @@
 class_name CustomerSpawner extends Node2D
 
 @export var customerTextures: Array[Texture]
+@export var spawns_in_day: int = 5
 
 @onready var spawnPoint = $"../FixedAnchors/CustomerSpawnPoint"
 @onready var checkoutPoint = $"../FixedAnchors/CustomerCheckoutPoint"
@@ -33,22 +34,33 @@ var current_thought3: Texture
 var current_order: Array[Texture]
 var current_order_score = 0
 
+var number_of_spawns = 0
+
+#func _ready() -> void:
+	#$"../Employee".done_today.connect(end_of_day_scene)
+
 func score_thought(tex1: Texture) -> void:
 	if tex1 in current_order:
-		#$"../Score".add_score(1)
 		current_order.erase(tex1)
 		current_order_score += 1
 	else:
-		#$"../Score".add_score(-1)
 		current_order_score -= 1
 	print("Score: ", $"../Score".current_score)
 
 func confirm_order() -> void:
 	$"../Score".add_score(current_order_score)
 	current_order_score = 0
-	
+
+func restart() -> void:
+	number_of_spawns = 0
+
 func spawn_new_customer() -> void:
 	print("Spawning customer")
+	if number_of_spawns >= spawns_in_day:
+		$"../Employee".employee_exit()
+		return
+	number_of_spawns += 1
+	
 	var customer = customerScene.instantiate()
 	add_child(customer)
 	customer.reparent($"..", false)

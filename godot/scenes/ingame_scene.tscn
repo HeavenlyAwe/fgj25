@@ -262,14 +262,33 @@ script = ExtResource("41_h55fi")
 window_x = Vector2(10, 230)
 window_y = Vector2(10, 230)
 
-[node name="Sprite2D" type="Sprite2D" parent="Score"]
+[node name="DayChart" type="Node2D" parent="Score"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Score/DayChart"]
 texture = ExtResource("42_fy58b")
 centered = false
 
-[node name="Line2D" type="Line2D" parent="Score"]
+[node name="Line2D" type="Line2D" parent="Score/DayChart"]
 position = Vector2(12, 0)
 points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 40)
 default_color = Color(0, 0, 0, 1)
+
+[node name="LongTermChart" type="Node2D" parent="Score"]
+visible = false
+position = Vector2(260, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Score/LongTermChart"]
+texture = ExtResource("42_fy58b")
+centered = false
+
+[node name="Line2D" type="Line2D" parent="Score/LongTermChart"]
+position = Vector2(12, 0)
+points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 40)
+default_color = Color(0, 0, 0, 1)
+
+[node name="ReportSession" type="Node2D" parent="."]
+visible = false
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]

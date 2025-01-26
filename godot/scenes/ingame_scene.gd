@@ -22,7 +22,15 @@ func _input(event) -> void:
 		get_tree().paused = true
 		pause_overlay.grab_button_focus()
 		pause_overlay.visible = true
-	
+		
+func _unhandled_key_input(input_event: InputEvent) -> void:
+	if input_event is InputEventKey:
+		if input_event.pressed and input_event.keycode == KEY_R:
+			var cb = func():
+				$Score.restart()
+				$CustomerSpawner.restart()
+				$CustomerSpawner.spawn_new_customer()
+			$Employee.move_to_position($FixedAnchors/EmployeeDiscussionPoint.position, cb)
 	#
 	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		#var callback = func():
