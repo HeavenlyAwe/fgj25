@@ -3,6 +3,7 @@ class_name Ingredient extends Interactable
 signal ingredient_interaction(Texture)
 
 func _ready() -> void:
+	super()
 	_on_target_changed.connect(_on_interaction)
 #signal _on_target_changed(Vector2, Callable)
 #
