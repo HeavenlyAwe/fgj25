@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=44 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://vv8joh10cs3i" path="res://assets/Customer3.png" id="38_8dt33"]
 [ext_resource type="Texture2D" uid="uid://dcooqlwaw73is" path="res://assets/Customer4.png" id="39_qq4ax"]
 [ext_resource type="Texture2D" uid="uid://bv7ihsqlr5x7f" path="res://assets/Customer5.png" id="40_n3f84"]
+[ext_resource type="Script" path="res://scenes/score.gd" id="41_h55fi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -86,7 +87,7 @@ texture = ExtResource("11_kaa7k")
 position = Vector2(616, 536)
 texture = ExtResource("11_fpqg3")
 
-[node name="Ingredient5" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
+[node name="Ingredient_Teas_EarlGrey" parent="Ingredients_Background" instance=ExtResource("14_cvqvq")]
 position = Vector2(740, 536)
 texture = ExtResource("12_oh6v2")
 
@@ -254,16 +255,29 @@ position = Vector2(2210, 960)
 script = ExtResource("16_8xw7x")
 customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k"), ExtResource("38_8dt33"), ExtResource("39_qq4ax"), ExtResource("40_n3f84")])
 
+[node name="Score" type="Node2D" parent="."]
+script = ExtResource("41_h55fi")
+
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_BerryBlast" to="Employee" method="move_to_position"]
-[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient5" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_BerryBlast" to="CustomerSpawner" method="score_thought"]
+[connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_EarlGrey" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_EarlGrey" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Teas_Matcha" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Teas_Matcha" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Ice" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Ice" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Cream" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Cream" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Blender" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Blender" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_BrownSugar" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Bobas_BrownSugar" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Toppings_Tropical" to="Employee" method="move_to_position"]
+[connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Toppings_Tropical" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="CashRegister" to="Employee" method="move_to_position"]
 [connection signal="input_event" from="CashRegister/Area2D" to="CashRegister" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]

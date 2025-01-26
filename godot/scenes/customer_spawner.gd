@@ -10,7 +10,7 @@ class_name CustomerSpawner extends Node2D
 
 @onready var thought_group_1 = [
 	$"../Ingredients_Background/Ingredient_Teas_BerryBlast",
-	$"../Ingredients_Background/Ingredient5",
+	$"../Ingredients_Background/Ingredient_Teas_EarlGrey",
 	$"../Ingredients_Background/Ingredient_Teas_Matcha",
 ]
 @onready var thought_group_2 = [
@@ -26,6 +26,14 @@ class_name CustomerSpawner extends Node2D
 
 var customerScene = preload("res://scenes/actors/customer/customer.tscn")
 
+var current_thought1: Texture
+var current_thought2: Texture
+var current_thought3: Texture
+
+func score_thought(tex1: Texture) -> void:
+	if tex1 == current_thought1 || tex1 == current_thought2 || tex1 == current_thought3:
+		$"../Score".add_score(1)
+	print("Score: ", $"../Score".current_score)
 
 func spawn_new_customer() -> void:
 	print("Spawning customer")
@@ -37,15 +45,15 @@ func spawn_new_customer() -> void:
 	customer._on_despawn.connect(spawn_new_customer)
 	if ! customerTextures.is_empty():
 		customer.texture = customerTextures.pick_random()
-	#customer.position = spawnPoint
-	#print(spawnPoint)
-	#print(checkoutPoint)
-	#add_child(customer)
-	#
+
+	current_thought1 = thought_group_1.pick_random().texture
+	current_thought2 = thought_group_2.pick_random().texture
+	current_thought3 = thought_group_3.pick_random().texture
+	
 	customer.set_thought(
-		thought_group_1.pick_random().texture,
-		thought_group_2.pick_random().texture,
-		thought_group_3.pick_random().texture
+		current_thought1,
+		current_thought2,
+		current_thought3
 	)
 	
 	cashRegister._on_accept_payment.connect(customer.leave_shop)
