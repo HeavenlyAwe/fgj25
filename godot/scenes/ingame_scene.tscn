@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=48 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -41,6 +41,9 @@
 [ext_resource type="Texture2D" uid="uid://dcooqlwaw73is" path="res://assets/Customer4.png" id="39_qq4ax"]
 [ext_resource type="Texture2D" uid="uid://bv7ihsqlr5x7f" path="res://assets/Customer5.png" id="40_n3f84"]
 [ext_resource type="Script" path="res://scenes/score.gd" id="41_h55fi"]
+[ext_resource type="Script" path="res://scenes/report_session.gd" id="41_ou10r"]
+[ext_resource type="Texture2D" uid="uid://bviafh6vb5e5a" path="res://assets/chart-background.png" id="42_fy58b"]
+[ext_resource type="Texture2D" uid="uid://deyqc0m8u5ne1" path="res://assets/Resultats.png" id="43_glls7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iknh8"]
 radius = 20.0
@@ -48,6 +51,9 @@ height = 66.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lp0a6"]
 radius = 22.2036
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3af57"]
+size = Vector2(2042, 1154)
 
 [node name="IngameScene" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -106,41 +112,6 @@ texture = ExtResource("13_tn4ye")
 position = Vector2(1272, 518)
 texture = ExtResource("14_v64ik")
 
-[node name="Manager" type="Sprite2D" parent="."]
-position = Vector2(2320, 720)
-texture = ExtResource("9_thyfw")
-flip_h = true
-script = ExtResource("11_1l8l2")
-
-[node name="Node2D" type="Node2D" parent="Manager"]
-scale = Vector2(-1, 1)
-
-[node name="Label" type="Label" parent="Manager/Node2D"]
-offset_left = -25.0
-offset_top = 114.0
-offset_right = 44.0
-offset_bottom = 138.0
-text = "Manager"
-
-[node name="Employee" type="Sprite2D" parent="."]
-position = Vector2(2240, 700)
-texture = ExtResource("8_skgrt")
-script = ExtResource("11_h5ypl")
-
-[node name="Node2D" type="Node2D" parent="Employee"]
-
-[node name="Label" type="Label" parent="Employee/Node2D"]
-offset_left = -43.0
-offset_top = 117.0
-offset_right = 26.0
-offset_bottom = 141.0
-text = "Worker
-"
-
-[node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
-texture = ExtResource("10_210cq")
-centered = false
-
 [node name="Signs_Foreground" type="Node2D" parent="."]
 
 [node name="Sign_Cups" type="Node2D" parent="Signs_Foreground"]
@@ -178,6 +149,41 @@ script = ExtResource("20_anl41")
 texture = ExtResource("24_elg6l")
 centered = false
 offset = Vector2(-116, 0)
+
+[node name="Manager" type="Sprite2D" parent="."]
+position = Vector2(2320, 720)
+texture = ExtResource("9_thyfw")
+flip_h = true
+script = ExtResource("11_1l8l2")
+
+[node name="Node2D" type="Node2D" parent="Manager"]
+scale = Vector2(-1, 1)
+
+[node name="Label" type="Label" parent="Manager/Node2D"]
+offset_left = -25.0
+offset_top = 114.0
+offset_right = 44.0
+offset_bottom = 138.0
+text = "Manager"
+
+[node name="Employee" type="Sprite2D" parent="."]
+position = Vector2(2240, 700)
+texture = ExtResource("8_skgrt")
+script = ExtResource("11_h5ypl")
+
+[node name="Node2D" type="Node2D" parent="Employee"]
+
+[node name="Label" type="Label" parent="Employee/Node2D"]
+offset_left = -43.0
+offset_top = 117.0
+offset_right = 26.0
+offset_bottom = 141.0
+text = "Worker
+"
+
+[node name="Foreground_BehindCustomer" type="Sprite2D" parent="."]
+texture = ExtResource("10_210cq")
+centered = false
 
 [node name="Ingredients_Foreground" type="Node2D" parent="."]
 
@@ -255,8 +261,53 @@ position = Vector2(2210, 960)
 script = ExtResource("16_8xw7x")
 customerTextures = Array[Texture]([ExtResource("22_r0cdi"), ExtResource("23_eq06k"), ExtResource("38_8dt33"), ExtResource("39_qq4ax"), ExtResource("40_n3f84")])
 
-[node name="Score" type="Node2D" parent="."]
+[node name="ReportSession" type="Node2D" parent="."]
+script = ExtResource("41_ou10r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ReportSession"]
+visible = false
+position = Vector2(222, 210)
+texture = ExtResource("43_glls7")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="ReportSession/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReportSession/Sprite2D/Area2D"]
+visible = false
+position = Vector2(801, 365)
+shape = SubResource("RectangleShape2D_3af57")
+
+[node name="Score" type="Node2D" parent="ReportSession"]
+position = Vector2(676, 438)
 script = ExtResource("41_h55fi")
+window_x = Vector2(10, 230)
+window_y = Vector2(10, 230)
+
+[node name="DayChart" type="Node2D" parent="ReportSession/Score"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ReportSession/Score/DayChart"]
+texture = ExtResource("42_fy58b")
+centered = false
+
+[node name="Line2D" type="Line2D" parent="ReportSession/Score/DayChart"]
+position = Vector2(12, 0)
+points = PackedVector2Array(14, 210, 40, 170, 72, 190, 106, 140, 144, 160, 218, 40)
+default_color = Color(0, 0, 0, 1)
+
+[node name="LongTermChart" type="Node2D" parent="ReportSession/Score"]
+visible = false
+position = Vector2(210, -62)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReportSession/Score/LongTermChart"]
+visible = false
+texture = ExtResource("42_fy58b")
+centered = false
+
+[node name="Line2D" type="Line2D" parent="ReportSession/Score/LongTermChart"]
+scale = Vector2(1.5, 1.5)
+points = PackedVector2Array(14, 210, 40, 170, 72, 190, 89.6835, 163.995, 106, 140, 144, 160, 218, 40)
+default_color = Color(0, 0.67451, 0, 1)
 
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Cups" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Cups" to="CustomerSpawner" method="score_thought"]
@@ -272,6 +323,7 @@ script = ExtResource("41_h55fi")
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Cream" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Background/Ingredient_Toppings_Blender" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Background/Ingredient_Toppings_Blender" to="CustomerSpawner" method="score_thought"]
+[connection signal="done_today" from="Employee" to="ReportSession" method="show_report"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="Employee" method="move_to_position"]
 [connection signal="ingredient_interaction" from="Ingredients_Foreground/Ingredient_Bobas_Raspberry" to="CustomerSpawner" method="score_thought"]
 [connection signal="_on_target_changed" from="Ingredients_Foreground/Ingredient_Bobas_BrownSugar" to="Employee" method="move_to_position"]
@@ -281,3 +333,4 @@ script = ExtResource("41_h55fi")
 [connection signal="_on_target_changed" from="CashRegister" to="Employee" method="move_to_position"]
 [connection signal="input_event" from="CashRegister/Area2D" to="CashRegister" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="ClickableItem/DialogueContainer" to="ClickableItem" method="_on_dialogue_container_input_event"]
+[connection signal="input_event" from="ReportSession/Sprite2D/Area2D" to="ReportSession" method="_on_area_2d_input_event"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vv3unqsy8x7"
-path="res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"
+uid="uid://b6kregttje82p"
+path="res://.godot/imported/SadThoughts.png-3734c07a89cf920c8f8d974ace24767d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/boot/Logo.png"
-dest_files=["res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"]
+source_file="res://assets/spritesheets/SadThoughts.png"
+dest_files=["res://.godot/imported/SadThoughts.png-3734c07a89cf920c8f8d974ace24767d.ctex"]
 
 [params]
 

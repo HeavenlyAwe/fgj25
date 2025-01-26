@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://d2plt7bbw25l4"]
+[gd_scene load_steps=131 format=3 uid="uid://d2plt7bbw25l4"]
 
 [ext_resource type="Texture2D" uid="uid://b115lhfkl3vr7" path="res://assets/Customer1.png" id="1_j7l3q"]
 [ext_resource type="Script" path="res://scenes/actors/customer/customer.gd" id="2_bnhg0"]
@@ -107,6 +107,10 @@
 [ext_resource type="Texture2D" uid="uid://yjep5lsryi0k" path="res://assets/brain/0098.png" id="101_fiwe8"]
 [ext_resource type="Texture2D" uid="uid://dsq4k1518l3yu" path="res://assets/brain/0099.png" id="102_etxun"]
 [ext_resource type="Texture2D" uid="uid://ba1iu5ybhn34u" path="res://assets/brain/0100.png" id="103_bnomb"]
+[ext_resource type="Texture2D" uid="uid://x17css2unklh" path="res://assets/spritesheets/AngeryThoughts.png" id="108_n3a25"]
+[ext_resource type="Texture2D" uid="uid://bwob0ba87ejdo" path="res://assets/spritesheets/HappyThoughts.png" id="109_dvt7h"]
+[ext_resource type="Texture2D" uid="uid://b6kregttje82p" path="res://assets/spritesheets/SadThoughts.png" id="110_7as8h"]
+[ext_resource type="Texture2D" uid="uid://8ja57ijrqusk" path="res://assets/spritesheets/SuperHappyThoughts.png" id="111_87vb0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx83c"]
 radius = 66.0
@@ -420,6 +424,124 @@ animations = [{
 "speed": 18.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_huawg"]
+atlas = ExtResource("108_n3a25")
+region = Rect2(0, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exn3h"]
+atlas = ExtResource("108_n3a25")
+region = Rect2(180, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxggq"]
+atlas = ExtResource("108_n3a25")
+region = Rect2(360, 0, 180, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynpe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huawg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exn3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxggq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80pm7"]
+atlas = ExtResource("109_dvt7h")
+region = Rect2(0, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekiud"]
+atlas = ExtResource("109_dvt7h")
+region = Rect2(180, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc1mc"]
+atlas = ExtResource("109_dvt7h")
+region = Rect2(360, 0, 180, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojql6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80pm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekiud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc1mc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axri4"]
+atlas = ExtResource("110_7as8h")
+region = Rect2(0, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xohj0"]
+atlas = ExtResource("110_7as8h")
+region = Rect2(180, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ushlw"]
+atlas = ExtResource("110_7as8h")
+region = Rect2(360, 0, 180, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2i75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axri4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xohj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ushlw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkhed"]
+atlas = ExtResource("111_87vb0")
+region = Rect2(0, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpi56"]
+atlas = ExtResource("111_87vb0")
+region = Rect2(180, 0, 180, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyw8o"]
+atlas = ExtResource("111_87vb0")
+region = Rect2(360, 0, 180, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdkjb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkhed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpi56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyw8o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lonr4"]
+
 [node name="Customer" type="Sprite2D"]
 position = Vector2(727, 676)
 texture = ExtResource("1_j7l3q")
@@ -459,5 +581,31 @@ texture = ExtResource("5_bpnoa")
 [node name="Slot3" type="Sprite2D" parent="BrainBubble/ThoughtSlots"]
 position = Vector2(173, -112)
 texture = ExtResource("6_rfnnb")
+
+[node name="Reaction" type="Area2D" parent="."]
+position = Vector2(-41, -286)
+
+[node name="AngryThoughts" type="AnimatedSprite2D" parent="Reaction"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ynpe2")
+frame_progress = 0.492085
+
+[node name="HappyThoughts" type="AnimatedSprite2D" parent="Reaction"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ojql6")
+frame_progress = 0.767375
+
+[node name="SadThoughts" type="AnimatedSprite2D" parent="Reaction"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_y2i75")
+frame_progress = 0.306164
+
+[node name="SuperHappyThoughts" type="AnimatedSprite2D" parent="Reaction"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xdkjb")
+frame_progress = 0.903269
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reaction"]
+shape = SubResource("CapsuleShape2D_lonr4")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -30,57 +30,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+
+[node name="GameLogo" parent="UI/CenterContainer/HSplitContainer" instance=ExtResource("4_fnufg")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/HSplitContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/separation = 5
 
-[node name="GameLogo" parent="UI/CenterContainer/VBoxContainer" instance=ExtResource("4_fnufg")]
-layout_mode = 2
-
-[node name="ContinueButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="UI/CenterContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 1
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_458kj")
 theme_override_icons/icon = ExtResource("6_tfcb4")
 text = "continue"
 
-[node name="NewGameButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="UI/CenterContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_458kj")
 theme_override_icons/icon = ExtResource("6_c2c6x")
 text = "new_game"
 
-[node name="SettingsButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="UI/CenterContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_458kj")
 theme_override_icons/icon = ExtResource("8_dvoba")
 text = "settings"
 
-[node name="ExitButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="UI/CenterContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_458kj")
 theme_override_icons/icon = ExtResource("9_rdnx8")
 text = "leave_game"
 
-[node name="Credits" type="MarginContainer" parent="UI/CenterContainer/VBoxContainer"]
+[node name="Credits" type="MarginContainer" parent="UI/CenterContainer/HSplitContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer/Credits"]
+[node name="Label" type="Label" parent="UI/CenterContainer/HSplitContainer/VBoxContainer/Credits"]
 layout_mode = 2
 text = "credits"
 label_settings = SubResource("LabelSettings_2ikbh")

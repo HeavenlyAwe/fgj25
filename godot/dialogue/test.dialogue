@@ -9,8 +9,9 @@ do placeholder.done()
 
 
 ~ intro
-Manager: Bubble bubble, bubble bubble bubble...
-Manager: Bubble bubble, bubble...
-Manager: Bubble bubble bubble, bubble...
+Manager: So you are the latest college dropout to need som quick cash.
+Manager: I wonder from under which rock they dug you up.
+Manager: I_ll have you know the Boba business is cut_throat.
+Manager: Anything but sweet
 do manager.manager_exit()
 => END

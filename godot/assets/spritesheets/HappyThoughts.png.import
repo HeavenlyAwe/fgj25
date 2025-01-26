@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vv3unqsy8x7"
-path="res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"
+uid="uid://bwob0ba87ejdo"
+path="res://.godot/imported/HappyThoughts.png-15fd7a59d7c413984a2ccd56095bc197.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/boot/Logo.png"
-dest_files=["res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"]
+source_file="res://assets/spritesheets/HappyThoughts.png"
+dest_files=["res://.godot/imported/HappyThoughts.png-15fd7a59d7c413984a2ccd56095bc197.ctex"]
 
 [params]
 

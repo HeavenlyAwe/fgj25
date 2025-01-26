@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vv3unqsy8x7"
-path="res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"
+uid="uid://bviafh6vb5e5a"
+path="res://.godot/imported/chart-background.png-62d0d3d36eb2441826c7665935905ded.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/boot/Logo.png"
-dest_files=["res://.godot/imported/Logo.png-163e8ceba7ac249ac9001cdfc298fdf4.ctex"]
+source_file="res://assets/chart-background.png"
+dest_files=["res://.godot/imported/chart-background.png-62d0d3d36eb2441826c7665935905ded.ctex"]
 
 [params]
 
