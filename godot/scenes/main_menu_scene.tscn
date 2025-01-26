@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=17 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/ingame_scene.tscn" id="2_nl5i6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cavrqydo612iq" path="res://assets/symbols/settings.png" id="8_dvoba"]
 [ext_resource type="Texture2D" uid="uid://oxdrbtp3rtu2" path="res://assets/symbols/quit.png" id="9_rdnx8"]
 [ext_resource type="AudioStream" uid="uid://dqqu761iyx3d" path="res://music/apple_cider.ogg" id="11_d5phh"]
+[ext_resource type="FontFile" uid="uid://le2vdo2626vw" path="res://fonts/Montserrat-Medium.ttf" id="12_dnqfm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d00m7"]
 animations = [{
@@ -112,10 +113,24 @@ size_flags_horizontal = 4
 theme_override_constants/margin_top = 10
 
 [node name="Label" type="Label" parent="UI/CenterContainer/HSplitContainer/VBoxContainer/Credits"]
+visible = false
 layout_mode = 2
 text = "credits"
 label_settings = SubResource("LabelSettings_2ikbh")
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/CenterContainer/HSplitContainer/VBoxContainer/Credits"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_dnqfm")
+theme_override_font_sizes/normal_font_size = 12
+text = "Programming: Christoffer Fridlund
+3D art & programming: Anders Forsman
+Pixel art: Chride Lassheikki
+SFX: Hakon Gudnason
+Music by Zane Little (CC0)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="FadeOverlay" parent="UI" instance=ExtResource("3_kf1us")]
 unique_name_in_owner = true
