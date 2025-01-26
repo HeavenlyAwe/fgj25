@@ -11,6 +11,9 @@ var watchable: bool = true
 func _ready() -> void:
 	$BrainBubble.visible = false
 	$BrainBubble.scale = Vector2.ZERO
+	
+func set_thought(tex1: Texture, tex2: Texture, tex3: Texture) -> void:
+	$BrainBubble/ThoughtSlots.set_thought(tex1, tex2, tex3)
 
 func leave_shop() -> void:
 	var cb1 = func():
