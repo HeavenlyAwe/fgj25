@@ -27,7 +27,7 @@ func _unhandled_key_input(input_event: InputEvent) -> void:
 	if input_event is InputEventKey:
 		if input_event.pressed and input_event.keycode == KEY_R:
 			var cb = func():
-				$Score.restart()
+				$ReportSession/Score.restart()
 				$CustomerSpawner.restart()
 				$CustomerSpawner.spawn_new_customer()
 			$Employee.move_to_position($FixedAnchors/EmployeeDiscussionPoint.position, cb)

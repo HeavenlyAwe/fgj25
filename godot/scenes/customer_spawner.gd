@@ -45,10 +45,10 @@ func score_thought(tex1: Texture) -> void:
 		current_order_score += 1
 	else:
 		current_order_score -= 1
-	print("Score: ", $"../Score".current_score)
+	print("Score: ", $"../ReportSession/Score".current_score)
 
 func confirm_order() -> void:
-	$"../Score".add_score(current_order_score)
+	$"../ReportSession/Score".add_score(current_order_score)
 	current_order_score = 0
 
 func restart() -> void:
