@@ -3,6 +3,8 @@ extends Movable
 @export var target: Vector2 = Vector2.ZERO
 @export var brain_tween_duration: float = 0.1
 @export var brain_timer: float = 3.0
+@export var sound_effect: AudioStream
+@export var audio_player: AudioStreamPlayer
 
 signal _on_despawn()
 
@@ -36,6 +38,10 @@ func show_brain() -> void:
 	$BrainBubble.visible = true
 	var tween = create_tween()
 	tween.tween_property($BrainBubble, "scale", Vector2(1, 1), brain_tween_duration)
+	if is_instance_valid(audio_player) && is_instance_valid(sound_effect):
+		audio_player.stream = sound_effect
+		audio_player.play()
+		print("play audio")
 	var cb = func():
 		await get_tree().create_timer(brain_timer).timeout
 		hide_brain()
