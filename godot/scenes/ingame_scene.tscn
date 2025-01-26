@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=55 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://dfe4j4ojims2y" path="res://assets/sound/bubbles.ogg" id="30_hasfp"]
 [ext_resource type="Texture2D" uid="uid://vv8joh10cs3i" path="res://assets/Customer3.png" id="38_8dt33"]
 [ext_resource type="Texture2D" uid="uid://dcooqlwaw73is" path="res://assets/Customer4.png" id="39_qq4ax"]
+[ext_resource type="AudioStream" uid="uid://d0rkw5rnwvcdw" path="res://assets/sound/mumbling.ogg" id="40_05y34"]
 [ext_resource type="Texture2D" uid="uid://bv7ihsqlr5x7f" path="res://assets/Customer5.png" id="40_n3f84"]
 [ext_resource type="Script" path="res://scenes/score.gd" id="41_h55fi"]
 [ext_resource type="Script" path="res://scenes/report_session.gd" id="41_ou10r"]
@@ -244,10 +245,14 @@ shape = SubResource("CircleShape2D_lp0a6")
 [node name="Customer" parent="." instance=ExtResource("14_jwryg")]
 visible = false
 
-[node name="IntroAnimator" type="Node2D" parent="."]
+[node name="IntroAnimator" type="Node2D" parent="." node_paths=PackedStringArray("audio_player")]
 script = ExtResource("11_0dfu1")
 dialogue_resource = ExtResource("8_6wyi8")
 dialgoue_start = "intro"
+sound_effect = ExtResource("40_05y34")
+audio_player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="IntroAnimator"]
 
 [node name="FixedAnchors" type="Node2D" parent="."]
 
