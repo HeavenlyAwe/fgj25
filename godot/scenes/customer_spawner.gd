@@ -30,9 +30,14 @@ var current_thought1: Texture
 var current_thought2: Texture
 var current_thought3: Texture
 
+var current_order: Array[Texture]
+
 func score_thought(tex1: Texture) -> void:
-	if tex1 == current_thought1 || tex1 == current_thought2 || tex1 == current_thought3:
+	if tex1 in current_order:
 		$"../Score".add_score(1)
+		current_order.erase(tex1)
+	else:
+		$"../Score".add_score(-1)
 	print("Score: ", $"../Score".current_score)
 
 func spawn_new_customer() -> void:
@@ -55,6 +60,8 @@ func spawn_new_customer() -> void:
 		current_thought2,
 		current_thought3
 	)
+	
+	current_order = [current_thought1, current_thought2, current_thought3]
 	
 	cashRegister._on_accept_payment.connect(customer.leave_shop)
 	
