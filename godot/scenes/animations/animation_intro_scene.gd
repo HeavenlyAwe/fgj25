@@ -10,6 +10,9 @@ func start() -> void:
 	#DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialgoue_start)
 	var cb1 = func():
 		var cb2 = func():
+			var cb3 = func():
+				pass
+			$"../Employee".move_to_position($"../Employee".position + Vector2(1, 0), cb3)
 			var balloon: Node = Balloon.instantiate()
 			get_tree().current_scene.add_child(balloon)
 			balloon.start(dialogue_resource, dialgoue_start)
